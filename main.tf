@@ -40,7 +40,7 @@ resource "aws_instance" "pilon_instance" {
       var.additional_sg_names
     ))
 
-  associate_public_ip_address = false
+  associate_public_ip_address = true
   iam_instance_profile = aws_iam_instance_profile.pilon_instance_profile.name
   subnet_id = data.aws_subnet.instance_subnet_placement.id
 
