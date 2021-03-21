@@ -39,7 +39,7 @@ variable "aws_subnet_id" {
 
 variable "aws_ami" {
   type = object({
-    owner_id = number
+    owner_id = string
     name = string
   })
 }
