@@ -1,7 +1,7 @@
 resource "aws_launch_template" "pilon_launch_template" {
   name = local.pilon_launch_template_name
   image_id = data.aws_ami.pilon_private_ami.id
-  default_version = "$Latest"
+  update_default_version = true
   instance_type = var.aws_instance_type
 
   security_group_names = flatten(concat(
