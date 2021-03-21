@@ -29,7 +29,7 @@ variable "aws_disk_device" {
   default = {
     name = "/dev/dvd",
     size = 20
-    type = "ebs"
+    type = "standard"
   }
 }
 
