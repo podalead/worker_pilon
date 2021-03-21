@@ -4,10 +4,10 @@ resource "aws_launch_template" "pilon_launch_template" {
   update_default_version = true
   instance_type = var.aws_instance_type
 
-  security_group_names = flatten(concat(
-    [aws_security_group.pilon_common_security_group.name],
+  vpc_security_group_ids = [
+    [aws_security_group.pilon_common_security_group.id],
     var.additional_sg_names
-  ))
+  ]
 
   network_interfaces {
     subnet_id = data.aws_subnet.instance_subnet_placement.id
@@ -35,10 +35,10 @@ resource "aws_instance" "pilon_instance" {
   instance_type = var.aws_instance_type
   key_name = aws_key_pair.pilon_keypair_attachment.key_name
 
-  security_groups = flatten(concat(
-    [aws_security_group.pilon_common_security_group.name],
-    var.additional_sg_names
-  ))
+  vpc_security_group_ids = flatten(concat(
+      [aws_security_group.pilon_common_security_group.id],
+      var.additional_sg_names
+    ))
 
   associate_public_ip_address = false
   iam_instance_profile = aws_iam_instance_profile.pilon_instance_profile.name

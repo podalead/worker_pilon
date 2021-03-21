@@ -1,5 +1,6 @@
 resource "aws_security_group" "pilon_common_security_group" {
   name = local.pilon_security_group_name
+  vpc_id = data.aws_subnet.instance_subnet_placement.vpc_id
 
   egress {
     from_port = 0
