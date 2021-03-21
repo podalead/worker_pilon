@@ -7,7 +7,7 @@ data "aws_ami" "pilon_private_ami" {
   most_recent = true
 
   filter {
-    name = "tag:Name"
+    name = "name"
     values = [var.aws_ami.name]
   }
 }
