@@ -3,7 +3,7 @@ data "aws_subnet" "instance_subnet_placement" {
 }
 
 data "aws_ami" "pilon_private_ami" {
-  owners = var.aws_ami.owner_id
+  owners = [var.aws_ami.owner_id]
   most_recent = true
 
   filter {
