@@ -11,6 +11,7 @@ resource "aws_launch_template" "pilon_launch_template" {
 
   network_interfaces {
     subnet_id = data.aws_subnet.instance_subnet_placement.id
+    associate_public_ip_address = "true"
   }
 
   iam_instance_profile {
