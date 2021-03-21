@@ -35,7 +35,7 @@ EOF
 }
 
 resource "aws_iam_role_policy_attachment" "pilon_policies" {
-  for_each = var.pilon_role_policies_arns
+  for_each = toset(var.pilon_role_policies_arns)
 
   role = aws_iam_role.pilon_common_role.name
   policy_arn = each.value

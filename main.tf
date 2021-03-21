@@ -5,7 +5,7 @@ resource "aws_launch_template" "pilon_launch_template" {
   instance_type = var.aws_instance_type
 
   security_group_names = flatten(concat(
-    aws_security_group.pilon_common_security_group.name,
+    [aws_security_group.pilon_common_security_group.name],
     var.additional_sg_names
   ))
 
@@ -36,7 +36,7 @@ resource "aws_instance" "pilon_instance" {
   key_name = aws_key_pair.pilon_keypair_attachment.key_name
 
   security_groups = flatten(concat(
-    aws_security_group.pilon_common_security_group.name,
+    [aws_security_group.pilon_common_security_group.name],
     var.additional_sg_names
   ))
 
