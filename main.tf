@@ -4,10 +4,10 @@ resource "aws_launch_template" "pilon_launch_template" {
   update_default_version = true
   instance_type = var.aws_instance_type
 
-  vpc_security_group_ids = [
+  vpc_security_group_ids = flatten(concat(
     [aws_security_group.pilon_common_security_group.id],
     var.additional_sg_names
-  ]
+  ))
 
   network_interfaces {
     subnet_id = data.aws_subnet.instance_subnet_placement.id
